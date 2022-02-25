@@ -6,5 +6,8 @@ Good afternoon, Respected people , animals and all my dear Aliens. i am here tod
 NO . just skip it.
 
 OK
-this is a simple block breaker game which you must have already played thousands of time in your keypad mobiles. Those were the days.
-That's enough.
+this is a simple BLOCK BREAKER game which you must have already played thousands of time in your keypad mobiles. Those were the days.
+Ball direction can be changed by paddle.
+
+In upcoming days, i think i will add multi hit blocks and other powerups.
+I think that's enough.
