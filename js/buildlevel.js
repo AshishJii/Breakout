@@ -5,12 +5,13 @@ export function buildlevel(game, levelArray){
 	let bricks = [];
 
 	levelArray.forEach((row, rowIndex) => {
-		row.forEach((brick, brickIndex) => {
-			if(brick === 1){
+		row.forEach((hardness, brickIndex) => {
+			if(hardness > 0){
 				bricks.push(
 					new Brick(game, 
 						{x: CANVAS_LEFT_PADDING + brickIndex*(BRICK_WIDTH+HORIZONTAL_MARGIN_BETWEEN_BRICKS),
-						 y: CANVAS_TOP_PADDING + rowIndex*(BRICK_HEIGHT+VERTICAL_MARGIN_BETWEEN_BRICKS)}));
+						 y: CANVAS_TOP_PADDING + rowIndex*(BRICK_HEIGHT+VERTICAL_MARGIN_BETWEEN_BRICKS)},
+						 hardness));
 			}
 		});
 	});
@@ -24,7 +25,7 @@ export function randomlevel(){
 	for(var i = 0;i<5;i++){
 		level[i] = [];
 		for(var j = 0;j<9;j++){
-			level[i][j] = Math.floor(Math.random()*2);
+			level[i][j] = Math.floor(Math.random()*2);		// change *2 to *3 for double hardness bricks
 		}
 	}
 	return level;

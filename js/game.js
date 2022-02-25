@@ -18,7 +18,7 @@ export default class Game{
 		this.stats = new Stats(this);
 		this.inputHandler = new InputHandler(this.paddle, this);
 		this.gameObjects = [];
-		this.bricks = [new Brick(this,0,0)];		//empty array to br filled with bricks
+		this.bricks = [new Brick(this,{x:0,y:0},1)];		//empty array to br filled with bricks
 		// dummy brick outside the canvas to avoid triggering empty array(no bricks) function at menu state
 		this.levels = levels;
 		this.gameObjects = [
@@ -191,7 +191,7 @@ export default class Game{
 		this.gameObjects.forEach(obj => obj.update(timestamp));
 
 		this.bricks.forEach(obj => obj.update());
-		this.bricks = this.bricks.filter(brick => brick.markedForRemoval==false);
+		this.bricks = this.bricks.filter(brick => brick.hardness>0);
 	}
 
 	togglePause(){
