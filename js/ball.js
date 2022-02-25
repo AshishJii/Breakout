@@ -51,17 +51,25 @@ export default class Ball{
 			this.position.y = this.position.y + this.currentSpeed.y*dl/100;
 		}
 
-		//wall on left or right
-		if(this.position.x < 0 || this.position.x + this.width > this.gameWidth)
+		//wall on left
+		if(this.position.x < 0){
 			this.currentSpeed.x = -this.currentSpeed.x;
-		//wall on top or bottom
-		if(this.position.y < 0)
+			this.position.x = 0;
+		}
+		//wall on right
+		if(this.position.x > this.gameWidth - this.width){
+			this.currentSpeed.x = -this.currentSpeed.x;
+			this.position.x = this.gameWidth - this.width;
+		}
+		//wall on top
+		if(this.position.y < 0){
 			this.currentSpeed.y = -this.currentSpeed.y;
-		if(this.position.y + this.height > this.gameHeight)
-		{
+			this.position.y = 0;
+		}
+		//wall on bottom
+		if(this.position.y + this.height > this.gameHeight){
 			this.game.stats.decrementLives();
 			this.resetAll();	// only ball reset not paddle. WHY? personal perference
-
 		}
 
 		//check collision with paddle
