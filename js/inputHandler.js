@@ -19,7 +19,6 @@ export default class InputHandler{
 				game.startRandom();
 				break;
 			}
-			//console.log("'"+e.key+"' : "+e.keyCode);
 		});
 		document.addEventListener("keyup", e => {
 			switch(e.keyCode){
@@ -28,6 +27,39 @@ export default class InputHandler{
 					paddle.stopMoving();
 				break;
 				case LEFTARROW_KEYCODE:
+				if(paddle.currentSpeed < 0)
+					paddle.stopMoving();
+				break;
+			}
+		});
+
+		document.addEventListener("pointerdown", e => {
+			switch(e.target.id){
+				case "rightBut":
+				paddle.moveRight();
+				break; 
+				case "leftBut":
+				paddle.moveLeft();
+				break;
+				case "escBut":
+				game.togglePause();
+				break;
+				case "spaceBut":
+				game.startCampaign();
+				break;
+				case "enterBut":
+				game.startRandom();
+				break;
+			}
+		});
+
+		document.addEventListener("pointerup", e => {
+			switch(e.target.id){
+				case "rightBut":
+				if(paddle.currentSpeed > 0)
+					paddle.stopMoving();
+				break; 
+				case "leftBut":
 				if(paddle.currentSpeed < 0)
 					paddle.stopMoving();
 				break;
