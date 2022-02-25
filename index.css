@@ -22,3 +22,8 @@ canvas{
 img{
 	display: none;
 }
+
+button{
+	width: 75px;
+	height: 50px;
+}
