@@ -2,7 +2,7 @@
 <html>
 <head> 
 	<meta charset="utf-8"> 
-	<title>BreakOut! v3.0</title> 
+	<title>BreakOut! v4.0</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"> 
 	<link rel="stylesheet" type="text/css" href="index.css">
 </head> 
@@ -17,24 +17,34 @@
 		<canvas id="myCanvas" width="475" height="300"></canvas>
 
 		<div style="background: black;display: block;margin: 0 auto;width: 400px; padding: 50px;">
-			<p>Temporary buttons for testing</p>
-			<br>
-			<button id="leftBut">LEFT</button>
-			<button id="escBut">ESC</button>
-			<button id="spaceBut">SPACE</button>
-			<button id="enterBut">ENTER</button>
-			<button id="rightBut">RIGHT</button>
+			<button id="leftBut" style="width: 190px;">LEFT</button>
+			<button id="escBut" style="width: 190px;">ESC</button>
+			<br><br>
+			<button id="spaceBut" style="width: 123px;">SPACE</button>
+			<button id="enterBut" style="width: 123px;">ENTER</button>
+			<button id="rightBut" style="width: 123px;">RIGHT</button>
 		</div>
-		<div style="background: lightblue;display: block;margin: 0 auto;width: 400px;padding: 20px;">
+		<div id="infoBox">
 			CONTROLS: <br>
 			Press left and right arrow key to control paddle<br>
 			Press Esc to play/pause;
 			<hr>
-			UPCOMING: <br>
-			Mobile scalability and touch controls
+			WHAT'S NEW: <br>
+			Version 4.0
+			<br>
+			<li>2-hit bricks added</li>
+			<li>Ball now reflects according to side it hit the brick. <br> (This may seem small but it isn't. There is no documentation for it. I had to devise the whole algo myself to calculate the side it hit and the intersection coordinate.)</li>
+			<li>Paddle and ball speed are reduced a little.</li>
+			
+			
+			
+			UPCOMING GOALS: <br>
+			Near term:
+			(1) The ball checks for collision from its center. It should check it from its edges. (2) A setting screen to change different Parameters. (3) Sounds?<br>
+			Long term:Mobile scalability and touch controls
 			Multi ball powerup
 			<hr>
-			This is the link to the code in case you want to dig deeper<br>
+			Link to the code:<br>
 			<a href="https://github.com/AshishJii/Breakout/tree/main">
 				https://github.com/AshishJii/Breakout/tree/main
 			</a>
