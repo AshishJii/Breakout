@@ -12,6 +12,15 @@ canvas{
 	position: relative;
 }
 
+#infoBox{
+	font-family:Georgia;
+	font-size: 15px;
+	background: lightblue;
+	display: block;
+	margin: 0 auto;
+	width: 400px;
+	padding: 20px;
+}
 /*span{
 	position: absolute;
 	width: 50%;
