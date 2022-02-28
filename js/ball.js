@@ -6,6 +6,8 @@ export default class Ball{
 		this.game = game;		// now the game obj is accessible in other function of this class
 		this.gameWidth = game.gameWidth;
 		this.gameHeight = game.gameHeight;
+		//this.width = 40;
+		//this.height = 40;
 		this.width = BALL_WIDTH;
 		this.height = BALL_HEIGHT;
 		this.speed = BALL_SPEED;
@@ -20,8 +22,8 @@ export default class Ball{
 
 	resetAll(){
 		this.position = {
-			x: (this.game.gameWidth - this.width)/2,
-			y: this.game.gameHeight - this.height - 20
+			x: this.game.gameWidth/2, // - this.width)/2,
+			y: this.game.gameHeight - 20 //this.height - 20
 		}
 		this.currentSpeed = {
 			x: -Math.sqrt((Math.pow(this.speed,2)/2)),
@@ -33,7 +35,12 @@ export default class Ball{
 	
 	draw(ctx){
 		ctx.beginPath();
-		ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
+		ctx.drawImage(this.image, this.position.x-this.width/2, this.position.y-this.height/2, this.width, this.height);
+		ctx.closePath();
+
+		ctx.beginPath();
+		ctx.arc(this.position.x, this.position.y, 2, 0, 6.3);
+		ctx.fill();
 		ctx.closePath();
 	}
 
@@ -41,6 +48,8 @@ export default class Ball{
 		let dl = timestamp - this.previousTimestamp;
 		this.previousTimestamp = timestamp;
 
+		//moving distance according to time passed since last frame
+		//helps making ball speed platform independent(not depenent on device frame rate)
 		if(isNaN(dl)){
 			this.position.x = this.position.x + this.currentSpeed.x*15/100;
 			this.position.y = this.position.y + this.currentSpeed.y*15/100;
@@ -52,22 +61,22 @@ export default class Ball{
 		}
 
 		//wall on left
-		if(this.position.x < 0){
+		if(this.position.x < this.width/2){
 			this.currentSpeed.x = -this.currentSpeed.x;
-			this.position.x = 0;
+			this.position.x = this.width/2;
 		}
 		//wall on right
-		if(this.position.x > this.gameWidth - this.width){
+		if(this.position.x > this.gameWidth - this.width/2){
 			this.currentSpeed.x = -this.currentSpeed.x;
-			this.position.x = this.gameWidth - this.width;
+			this.position.x = this.gameWidth - this.width/2;
 		}
 		//wall on top
-		if(this.position.y < 0){
+		if(this.position.y < this.height/2){
 			this.currentSpeed.y = -this.currentSpeed.y;
-			this.position.y = 0;
+			this.position.y = this.height/2;
 		}
 		//wall on bottom
-		if(this.position.y + this.height > this.gameHeight){
+		if(this.position.y > this.gameHeight - this.height/2){
 			this.game.stats.decrementLives();
 			this.resetAll();	// only ball reset not paddle. WHY? personal perference
 		}
@@ -77,19 +86,29 @@ export default class Ball{
 			//direction change by paddle
 			this.currentSpeed.x = this.speed*(2*this.position.x-2*this.game.paddle.position.x-this.game.paddle.width)/this.game.paddle.width;
 
-			//exttemes removal
+			//extremes removal
 			this.currentSpeed.x = this.currentSpeed.x >  0.94*this.speed ?  0.94*this.speed : this.currentSpeed.x ;
 			this.currentSpeed.x = this.currentSpeed.x < -0.94*this.speed ? -0.94*this.speed : this.currentSpeed.x;
 
 			this.currentSpeed.y = -Math.sqrt(Math.pow(this.speed,2)-Math.pow(this.currentSpeed.x,2));
-			this.position.y = this.game.paddle.position.y - this.height;
+			this.position.y = this.game.paddle.position.y - this.height/2;
 		}
 	}
 
-	collidedToBrick(){ 
-		this.currentSpeed.y = -this.currentSpeed.y;	//ostrich algorithm
+	collidedToBrick(point){ 
+		switch(point.side){
+			case "LEFT": case "RIGHT":
+			this.currentSpeed.x = -this.currentSpeed.x;
+			break;
+			case "TOP": case "BOTTOM":
+			this.currentSpeed.y = -this.currentSpeed.y;
+			break;
+		}
+		//this.currentSpeed.y = -this.currentSpeed.y;	//ostrich algorithm
 		/*it turns out finding the directtion from which ball hit the brick is pretty hard
 		it would require storing a previous state and some complex calulations with vectors and stuff.
 		So, please accept my noob solution.*/
+		//NO longer required . i created the algorithm for it.
+
 	}
 }

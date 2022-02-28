@@ -25,7 +25,7 @@ export function randomlevel(){
 	for(var i = 0;i<5;i++){
 		level[i] = [];
 		for(var j = 0;j<9;j++){
-			level[i][j] = Math.floor(Math.random()*2);		// change *2 to *3 for double hardness bricks
+			level[i][j] = Math.floor(Math.random()*3);		// change *2 to *3 for double hardness bricks
 		}
 	}
 	return level;

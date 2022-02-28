@@ -1,5 +1,5 @@
 //maybe document object is available to all classes
-import { detectCollision } from './collisionDetection.js';
+import { detectCollision, PositionDetection} from './collisionDetection.js';
 import { BRICK_WIDTH, BRICK_HEIGHT } from './constants.js';
 export default class Brick{
 	constructor(game, position, hardness){
@@ -9,6 +9,8 @@ export default class Brick{
 		this.hardness = hardness;
 		this.image = this.getImage(hardness); 
 		this.position = position;
+		this.ballPreviousState;
+		this.ballCurrentState;
 	}
 
 	draw(ctx){
@@ -18,12 +20,31 @@ export default class Brick{
 	}
 
 	update(){
-		if(detectCollision(this.game.ball, this)){
-			this.game.ball.collidedToBrick();
+		this.ballCurrentState = {
+			position:{
+				x:this.game.ball.position.x.toFixed(2),
+				y:this.game.ball.position.y.toFixed(2)
+			}
+		};
+
+
+		if(detectCollision(this.ballCurrentState, this)){
+			console.warn("Collision Detected");
+			
+			let posDetector = new PositionDetection(this.ballPreviousState, this.ballCurrentState, this);
+			let point = posDetector.intersectionPoint();	//point contains 3 properties : {x: X,y: Y,side: "LEFT"};
+			console.error("SIDE IS : "+point.side);
+			this.game.ball.collidedToBrick(point);
 			this.game.stats.incrementScore();
 			this.hardness--;
 			this.image = this.getImage(this.hardness);
 		}
+			this.ballPreviousState = {
+			position:{
+				x:this.game.ball.position.x.toFixed(2),
+				y:this.game.ball.position.y.toFixed(2)
+			}
+		};
 	}
 
 	getImage(hardness){
