@@ -1,62 +1,157 @@
-<!DOCTYPE html>
+<!-- HTML Meta Tags -->
+
+<titl<!DOCTYPE html>
+
 <html>
+
 <head> 
+
 	<meta charset="utf-8"> 
+
 	<title>BreakOut! v4.0</title> 
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+e>BreakOut v4.0</title>
+
+<meta name="description" content="Play the world's famous block breaker game with tons of features like different brick types, random level generator and many more.">
+
+<!-- Facebook Meta Tags -->
+
+<meta property="og:url" content="https://ashishjii.github.io/Breakout/">
+
+<meta property="og:type" content="website">
+
+<meta property="og:title" content="BreakOut v4.0">
+
+<meta property="og:description" content="Play the world's famous block breaker game with tons of features like different brick types, random level generator and many more.">
+
+<meta property="og:image" content="https://raw.githubusercontent.com/AshishJii/Breakout/main/assets/images/squareIco.png">
+
+<!-- Twitter Meta Tags -->
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="twitter:domain" content="ashishjii.github.io">
+
+<meta property="twitter:url" content="https://ashishjii.github.io/Breakout/">
+
+<meta name="twitter:title" content="BreakOut v4.0">
+
+<meta name="twitter:description" content="Play the world's famous block breaker game with tons of features like different brick types, random level generator and many more.">
+
+<meta name="twitter:image" content="https://raw.githubusercontent.com/AshishJii/Breakout/main/assets/images/squareIco.png">
+
+<!-- Meta Tags Generated via https://www.opengraph.xyz -->
+
+      
+
 	<meta property="og:title" content="BreakOut v4.0" />
+
 	<meta property="og:url" content="https://ashishjii.github.io/Breakout/" />
+
 	<meta property="og:image" content="assets/images/squaredIco.png" />
 
+
+
 	<link rel = "icon" href = "assets/images/circleIco.png" type = "image/x-icon">
+
 	<link rel="stylesheet" type="text/css" href="index.css">
+
 </head> 
+
 <body> 
 
+
+
 	<img id="img_ball" src="assets/images/ball.png">
+
 	<img id="img_brick" src="assets/images/brick.png">
+
 	<img id="img_brick1" src="assets/images/brick1.png">
+
 	<img id="img_brick2" src="assets/images/brick2.png">
+
 	<!--<span id="leftBut"></span> 
+
 		<span id="rightBut" style="right: 0;border-left: 2px dashed red;"></span> -->
+
 		<canvas id="myCanvas" width="475" height="300"></canvas>
+
 		<div id="controlBox">
+
 			
+
 			<button id="escBut" style="background: #aaa; width: 122px;">ESC</button>
+
 			<button id="spaceBut" style="background: #aaa; width: 122px;">SPACE</button>
+
 			<button id="enterBut" style="background: #aaa; width: 122px;">ENTER</button>
+
 			<br><br>
+
 			<button id="leftBut" style="background: #aaa; width: 185px;height: 150px;">LEFT</button>
+
 			<button id="rightBut" style="background: #aaa; width: 185px;height: 150px;">RIGHT</button>
+
 			
+
 		</div>
+
 		<div id="infoBox">
+
 			CONTROLS: <br>
+
 			Press left and right arrow key to control paddle<br>
+
 			Press Esc to play/pause;
+
 			<hr>
+
 			WHAT'S NEW: <br>
+
 			Version 4.0
+
 			<br>
+
 			<li>2-hit bricks added</li>
+
 			<li>Ball now reflects according to side it hit the brick. <br> (This may seem small but it isn't. There is no documentation for it. I had to devise the whole algo myself to calculate the side it hit and the intersection coordinate.)</li>
+
 			<li>Paddle and ball speed are reduced a little.</li>
+
 			
+
 			
+
 			
+
 			UPCOMING GOALS: <br>
+
 			Near term:
+
 			(1) The ball checks for collision from its center. It should check it from its edges. (2) A setting screen to change different Parameters. (3) Sounds?<br>
+
 			Long term:Mobile scalability and touch controls
+
 			Multi ball powerup
+
 			<hr>
+
 			Link to the code:<br>
+
 			<a href="https://github.com/AshishJii/Breakout/tree/main">
+
 				https://github.com/AshishJii/Breakout/tree/main
+
 			</a>
+
 			
+
 		</div>
+
 		<script type="module" src="index.js"></script> 
+
 	</body>
+
 	</html>
