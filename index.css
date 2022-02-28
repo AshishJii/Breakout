@@ -3,7 +3,7 @@
 	margin: 0;
 	background-color: #ccc;
 }
-
+body{touch-action: manipulation;}
 canvas{
 	background: #eee;
 	display: block;
