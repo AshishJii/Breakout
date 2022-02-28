@@ -3,7 +3,13 @@
 <head> 
 	<meta charset="utf-8"> 
 	<title>BreakOut! v4.0</title> 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+	<meta property="og:title" content="BreakOut v4.0" />
+	<meta property="og:url" content="https://ashishjii.github.io/Breakout/" />
+	<meta property="og:image" content="assets/images/squaredIco.png" />
+
+	<link rel = "icon" href = "assets/images/circleIco.png" type = "image/x-icon">
 	<link rel="stylesheet" type="text/css" href="index.css">
 </head> 
 <body> 
@@ -16,12 +22,13 @@
 		<span id="rightBut" style="right: 0;border-left: 2px dashed red;"></span> -->
 		<canvas id="myCanvas" width="475" height="300"></canvas>
 		<div id="controlBox">
-			<button id="leftBut" style="background: #aaa; width: 185px;height: 150px;">LEFT</button>
-			<button id="rightBut" style="background: #aaa; width: 185px;height: 150px;">RIGHT</button>
-			<br><br>
+			
 			<button id="escBut" style="background: #aaa; width: 122px;">ESC</button>
 			<button id="spaceBut" style="background: #aaa; width: 122px;">SPACE</button>
 			<button id="enterBut" style="background: #aaa; width: 122px;">ENTER</button>
+			<br><br>
+			<button id="leftBut" style="background: #aaa; width: 185px;height: 150px;">LEFT</button>
+			<button id="rightBut" style="background: #aaa; width: 185px;height: 150px;">RIGHT</button>
 			
 		</div>
 		<div id="infoBox">
