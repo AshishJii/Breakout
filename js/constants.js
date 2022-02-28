@@ -13,7 +13,7 @@ export const GAMETYPE = {
 	RANDOM: 1
 }
 
-export const BALL_SPEED = 30;
+export const BALL_SPEED = 25;
 
 export const BALL_WIDTH = 10;
 
