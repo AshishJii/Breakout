@@ -102,6 +102,7 @@ export default class Ball{
 			break;
 			case "TOP": case "BOTTOM":
 			this.currentSpeed.y = -this.currentSpeed.y;
+			default:
 			break;
 		}
 		//this.currentSpeed.y = -this.currentSpeed.y;	//ostrich algorithm
@@ -109,6 +110,5 @@ export default class Ball{
 		it would require storing a previous state and some complex calulations with vectors and stuff.
 		So, please accept my noob solution.*/
 		//NO longer required . i created the algorithm for it.
-
 	}
 }
