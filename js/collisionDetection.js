@@ -77,9 +77,10 @@ export class PositionDetection{
 		console.log("x = "+this.top+" to "+this.bottom);
 
 		let SidesToCheck = this.directionCheck();
-		//yes i know i should have usen forEach, but it doesnt support break statement inside it
-		var i;
-		for(i = 0;i<SidesToCheck.length;i++){
+		//error fallback when ball after colliding could not come out of brick till next frame
+		if(SidesToCheck.length === 0) return null;		
+		//yes i know i should have used forEach, but it doesnt support break statement inside it
+		for(var i = 0;i<SidesToCheck.length;i++){
 			this.computeSideCoordinates(SidesToCheck[i]);
 			point = this.solveLineEqns();
 			if(point.x >= Math.min(this.x1,this.x2) 
