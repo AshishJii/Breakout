@@ -33,13 +33,18 @@ export default class Brick{
 			
 			let posDetector = new PositionDetection(this.ballPreviousState, this.ballCurrentState, this);
 			let point = posDetector.intersectionPoint();	//point contains 3 properties : {x: X,y: Y,side: "LEFT"};
-			console.error("SIDE IS : "+point.side);
-			this.game.ball.collidedToBrick(point);
-			this.game.stats.incrementScore();
-			this.hardness--;
-			this.image = this.getImage(this.hardness);
+			if(point !== null){
+				console.error("SIDE IS : "+point.side);
+				this.game.ball.collidedToBrick(point);
+				this.game.stats.incrementScore();
+				this.hardness--;
+				this.image = this.getImage(this.hardness);
+			}
+			else{
+				console.error("null");
+			}	
 		}
-			this.ballPreviousState = {
+		this.ballPreviousState = {
 			position:{
 				x:this.game.ball.position.x.toFixed(2),
 				y:this.game.ball.position.y.toFixed(2)
