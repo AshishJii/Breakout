@@ -35,7 +35,7 @@ export default class Game{
 			return;
 		this.gameType = GAMETYPE.CAMPAIGN;
 		this.stats.currentLevel = 1;
-		this.stats.reset();
+		this.stats.resetScore();
 		this.start();
 	}
 
@@ -46,7 +46,7 @@ export default class Game{
 			return;
 		this.gameType = GAMETYPE.RANDOM;
 		this.stats.currentLevel = "RANDOM";
-		this.stats.reset();
+		this.stats.resetScore();
 		this.start();
 	}
 
@@ -65,7 +65,7 @@ export default class Game{
 			this.bricks = buildlevel(this, this.levels[this.stats.currentLevel-1]);
 			break;
 		}
-		this.stats.reset();
+		this.stats.resetLives();
 		this.ball.resetAll();	
 		this.gameState = GAMESTATE.RUNNING;	
 	}
@@ -201,13 +201,15 @@ export default class Game{
 	}
 
 	togglePause(){
-		if(this.gameState == GAMESTATE.RUNNING)
+		switch(this.gameState)
 		{
+			case GAMESTATE.RUNNING:
 			this.gameState = GAMESTATE.PAUSED;
 			this.ball.resetTimestamp();
-		}
-		else{
+			break;
+			case GAMESTATE.PAUSED:
 			this.gameState = GAMESTATE.RUNNING;
+			break;
 		}
 	}
 }
