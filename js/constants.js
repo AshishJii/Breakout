@@ -4,8 +4,7 @@ export const GAMESTATE = {
 	MENU: 2,
 	GAMEOVER: 3,
 	NEWLEVEL: 4,
-	GAMECOMPLETE: 5,
-	RANDOMLEVEL: 6
+	GAMECOMPLETE: 5
 }
 
 export const GAMETYPE = {
