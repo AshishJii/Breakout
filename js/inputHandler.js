@@ -13,6 +13,7 @@ export default class InputHandler{
 				game.togglePause();
 				break;
 				case SPACE_KEYCODE:
+				e.preventDefault();
 				game.startCampaign();
 				break;
 				case ENTER_KEYCODE:
