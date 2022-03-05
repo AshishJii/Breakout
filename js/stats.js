@@ -5,9 +5,12 @@ export default class Stats{
 		this.currentLevel = 1;
 	}
 
-	reset(){
-		this.lives = NO_OF_LIVES;
+	resetScore(){
 		this.score = 0;
+	}
+
+	resetLives(){
+		this.lives = NO_OF_LIVES;
 	}
 	draw(ctx){
 		//Score
