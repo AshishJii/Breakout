@@ -3,29 +3,35 @@
 	margin: 0;
 	background-color: #ccc;
 }
-
-canvas{
-	background: #eee;
-	display: block;
+#containerBox{			/*Canvases(plural) container*/
 	margin: 0 auto;
+	width: 475px;
+	height: 300px;
+}
+#mainCanvas{			/*main game canvas*/
+	background: none;
+	vertical-align: bottom;
+	position: absolute;
 	z-index: 3;
-	position: relative;
+}
+#bgCanvas{				/*background scene canvas*/
+	background: #eee;
+	vertical-align: bottom;
+	position: absolute;
+	z-index: 2;
+}
+#keysAndInfoContainer{	/*key and instruction box */
+	margin: 0 auto;
+	width: 475px;
 }
 #controlBox{
 	background: #222;
-	display: block;
-	margin: 0 auto;
-	width: 375px;
 	padding: 50px;
 }
-
 #infoBox{
 	font-family:Georgia;
 	font-size: 15px;
 	background: lightblue;
-	display: block;
-	margin: 0 auto;
-	width: 435px;
 	padding: 20px;
 }
 /*span{
