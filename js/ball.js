@@ -37,11 +37,6 @@ export default class Ball{
 		ctx.beginPath();
 		ctx.drawImage(this.image, this.position.x-this.width/2, this.position.y-this.height/2, this.width, this.height);
 		ctx.closePath();
-
-		ctx.beginPath();
-		ctx.arc(this.position.x, this.position.y, 2, 0, 6.3);
-		ctx.fill();
-		ctx.closePath();
 	}
 
 	update(timestamp){
