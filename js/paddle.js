@@ -3,7 +3,8 @@ export default class Paddle{
     constructor(game){
         this.gameWidth = game.gameWidth;
         this.width = 75;
-        this.height = 10;
+        this.height = 18;
+        this.image = document.querySelector("#img_paddle");
 
         this.moveSpeed = 40;
         this.currentSpeed = 0;
@@ -30,21 +31,17 @@ export default class Paddle{
 
     draw(ctx){
         ctx.beginPath();
-        ctx.fillRect(this.position.x, this.position.y, this.width, this.height)
-        //ctx.fillStyle = color;
-        //ctx.fill();
+        ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
         ctx.closePath();
     }
 
     update(timestamp){
-
         let dl = timestamp - this.previousTimestamp;
         this.previousTimestamp = timestamp;
 
         if(isNaN(dl)){
             this.position.x = this.position.x + this.currentSpeed;
         }
-
         else{
             this.position.x = this.position.x + this.currentSpeed*dl/100;
         }
