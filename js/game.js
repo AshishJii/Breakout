@@ -75,7 +75,7 @@ export default class Game{
 			case GAMESTATE.MENU:
 			ctx.beginPath();
 			ctx.rect(0,0,this.gameWidth,this.gameHeight);
-			ctx.fillStyle = "rgba(0,0,0,1)";
+			ctx.fillStyle = "rgba(0,0,0,0.3)";
 			ctx.fill();
 			ctx.closePath();
 
@@ -102,7 +102,7 @@ export default class Game{
 			case GAMESTATE.GAMEOVER:
 			ctx.beginPath();
 			ctx.rect(0,0,this.gameWidth,this.gameHeight);
-			ctx.fillStyle = "rgba(0,0,0,1)";
+			ctx.fillStyle = "rgba(0,0,0,0.8)";
 			ctx.fill();
 			ctx.closePath();
 
@@ -129,7 +129,7 @@ export default class Game{
 			case GAMESTATE.GAMECOMPLETE:
 			ctx.beginPath();
 			ctx.rect(0,0,this.gameWidth,this.gameHeight);
-			ctx.fillStyle = "rgba(0,0,0,1)";
+			ctx.fillStyle = "rgba(0,0,0,0.5)";
 			ctx.fill();
 			ctx.closePath();
 
