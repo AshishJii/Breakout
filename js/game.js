@@ -89,7 +89,7 @@ export default class Game{
 			ctx.fillStyle = "white";
 			ctx.textAlign = "center";
 			ctx.textBaseline = "middle";
-			ctx.fillText("v4.0", this.gameWidth/2, this.gameHeight/2+18);
+			ctx.fillText("v4.2", this.gameWidth/2, this.gameHeight/2+18);
 
 			ctx.font = "15px Arial";
 			ctx.fillStyle = "white";
