@@ -78,12 +78,13 @@ export default class Ball{
 
 		//check collision with paddle
 		if(detectCollision(this, this.game.paddle)){
+			navigator.vibrate(100);
 			//direction change by paddle
 			this.currentSpeed.x = this.speed*(2*this.position.x-2*this.game.paddle.position.x-this.game.paddle.width)/this.game.paddle.width;
 
 			//extremes removal
-			this.currentSpeed.x = this.currentSpeed.x >  0.94*this.speed ?  0.94*this.speed : this.currentSpeed.x ;
-			this.currentSpeed.x = this.currentSpeed.x < -0.94*this.speed ? -0.94*this.speed : this.currentSpeed.x;
+			this.currentSpeed.x = this.currentSpeed.x >  0.92*this.speed ?  0.92*this.speed : this.currentSpeed.x ;
+			this.currentSpeed.x = this.currentSpeed.x < -0.92*this.speed ? -0.92*this.speed : this.currentSpeed.x;
 
 			this.currentSpeed.y = -Math.sqrt(Math.pow(this.speed,2)-Math.pow(this.currentSpeed.x,2));
 			this.position.y = this.game.paddle.position.y - this.height/2;
