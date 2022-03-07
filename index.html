@@ -31,41 +31,47 @@
 </head>
 <body> 
 	<img id="img_ball" src="assets/images/ball.png">
-	<img id="img_brick" src="assets/images/brick.png">
 	<img id="img_brick1" src="assets/images/brick1.png">
-
 	<img id="img_brick2" src="assets/images/brick2.png">
+	<img id="bg" src="assets/images/bg_mountains1.png">
+	<img id="img_paddle" src="assets/images/paddle.png">
 	<!--<span id="leftBut"></span> 
 		<span id="rightBut" style="right: 0;border-left: 2px dashed red;"></span> -->
-		<canvas id="myCanvas" width="475" height="300"></canvas>
-		<div id="controlBox">
-			<button id="escBut" style="background: #aaa; width: 122px;">ESC</button>
-			<button id="spaceBut" style="background: #aaa; width: 122px;">SPACE</button>
-			<button id="enterBut" style="background: #aaa; width: 122px;">ENTER</button>
-			<br><br>
-			<button id="leftBut" style="background: #aaa; width: 185px;height: 150px;">LEFT</button>
-			<button id="rightBut" style="background: #aaa; width: 185px;height: 150px;">RIGHT</button>
+		<div id="containerBox">
+			<canvas id="mainCanvas" width="475" height="300"></canvas>
+			<canvas id="bgCanvas" width="475" height="300"></canvas>
 		</div>
-		<div id="infoBox">
-			CONTROLS: <br>
-			Press left and right arrow key to control paddle<br>
-			Press Esc to play/pause;
-			<hr>
-			WHAT'S NEW: <br>
-			Version 4.1
-			<br>
-			<li>Scaled for mobiles</li>
-			<li>FIXED Esc button malfunction in menu screen</li>
-			<li>Score adds up in campaign levels</li>
-			UPCOMING GOALS: <br>
-			(1) The ball checks for collision from its center. It should check it from its edges. (2) A setting screen to change different Parameters. (3) Multi ball powerup. (4) Sounds?<br>
-			
-			<hr>
-			Link to the code:<br>
-			<a href="https://github.com/AshishJii/Breakout/tree/main">
-				https://github.com/AshishJii/Breakout/tree/main
-			</a>
+		<div id="keysAndInfoContainer">
+			<div id="controlBox">
+				<button id="escBut" style="background: #aaa; width: 122px;">ESC</button>
+				<button id="spaceBut" style="background: #aaa; width: 122px;">SPACE</button>
+				<button id="enterBut" style="background: #aaa; width: 122px;">ENTER</button>
+				<br><br>
+				<button id="leftBut" style="background: #aaa; width: 185px;height: 150px;">LEFT</button>
+				<button id="rightBut" style="background: #aaa; width: 185px;height: 150px;">RIGHT</button>
+			</div>
+			<div id="infoBox">
+				CONTROLS: <br>
+				Press left and right arrow key to control paddle<br>
+				Press Esc to play/pause;
+				<hr>
+				WHAT'S NEW: <br>
+				Version 4.1
+				<br>
+				<li>Scaled for mobiles</li>
+				<li>FIXED Esc button malfunction in menu screen</li>
+				<li>Score adds up in campaign levels</li>
+				UPCOMING GOALS: <br>
+				(1) The ball checks for collision from its center. It should check it from its edges. (2) A setting screen to change different Parameters. (3) Multi ball powerup. (4) Sounds?<br>
+
+				<hr>
+				Link to the code:<br>
+				<a href="https://github.com/AshishJii/Breakout/tree/main">
+					https://github.com/AshishJii/Breakout/tree/main
+				</a>
+			</div>
 		</div>
+		
 		<script type="module" src="index.js"></script> 
 	</body>
 	</html>
