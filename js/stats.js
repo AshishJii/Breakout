@@ -22,6 +22,7 @@ export default class Stats{
 		ctx.fillText("Score: "+this.score, STATS_HORIZONTAL_MARGIN, STATS_VERTICAL_MARGIN);
 		ctx.closePath();
 
+		//Level
 		ctx.beginPath();
 		ctx.font = STATS_FONTSIZE+" "+STATS_FONTS;
 		ctx.fillStyle = STATS_FONTCOLOR;
@@ -30,7 +31,6 @@ export default class Stats{
 		ctx.fillText("Level: "+this.currentLevel, this.game.gameWidth/2, STATS_VERTICAL_MARGIN);
 		ctx.closePath();
 
-		
 		//Lives
 		ctx.beginPath();
 		ctx.font = STATS_FONTSIZE+" "+STATS_FONTS;
@@ -52,7 +52,7 @@ export default class Stats{
 		this.lives--;
 	}
 
-	incrementScore(){
+	updateScore(){
 		this.score++;
 	}
 }
