@@ -5,6 +5,7 @@ import Stats from './stats.js';
 import InputHandler from './inputHandler.js';				//if same folder use './paddle.js'
 import { buildlevel, randomlevel, levels } from './buildlevel.js';
 import { GAMESTATE, GAMETYPE } from './constants.js';
+import {displayState} from './displayState.js';
 
 export default class Game{
 	constructor(gameWidth, gameHeight){
@@ -30,8 +31,8 @@ export default class Game{
 	// you can also inititalise global variable inside a function by passing them as this.paddle or this.xyz(not done here)
 	startCampaign(){
 		if(this.gameState !== GAMESTATE.MENU 
-			&& this.gameState !== GAMESTATE.GAMECOMPLETE
-			&& this.gameState !== GAMESTATE.GAMEOVER)
+			&& this.gameState !== GAMESTATE.COMPLETE
+			&& this.gameState !== GAMESTATE.OVER)
 			return;
 		this.gameType = GAMETYPE.CAMPAIGN;
 		this.stats.currentLevel = 1;
@@ -41,8 +42,8 @@ export default class Game{
 
 	startRandom(){
 		if(this.gameState !== GAMESTATE.MENU 
-			&& this.gameState !== GAMESTATE.GAMECOMPLETE
-			&& this.gameState !== GAMESTATE.GAMEOVER)
+			&& this.gameState !== GAMESTATE.COMPLETE
+			&& this.gameState !== GAMESTATE.OVER)
 			return;
 		this.gameType = GAMETYPE.RANDOM;
 		this.stats.currentLevel = "RANDOM";
@@ -52,7 +53,6 @@ export default class Game{
 
 	startNextLevel(){
 		this.stats.currentLevel++;
-		this.gameState = GAMESTATE.NEWLEVEL;
 		this.start();
 	}
 
@@ -71,111 +71,32 @@ export default class Game{
 	}
 
 	draw(ctx){
+		//display screens when gamestate != (running or paused)
 		switch(this.gameState){
-			case GAMESTATE.MENU:
-			ctx.beginPath();
-			ctx.rect(0,0,this.gameWidth,this.gameHeight);
-			ctx.fillStyle = "rgba(0,0,0,0.3)";
-			ctx.fill();
-			ctx.closePath();
-
-			ctx.font = "30px Arial";
-			ctx.fillStyle = "white";
-			ctx.textAlign = "center";
-			ctx.textBaseline = "middle";
-			ctx.fillText("BreakOut", this.gameWidth/2, this.gameHeight/2);
-
-			ctx.font = "12px Arial";
-			ctx.fillStyle = "white";
-			ctx.textAlign = "center";
-			ctx.textBaseline = "middle";
-			ctx.fillText("v4.2", this.gameWidth/2, this.gameHeight/2+18);
-
-			ctx.font = "15px Arial";
-			ctx.fillStyle = "white";
-			ctx.textAlign = "center";
-			ctx.textBaseline = "bottom";
-			ctx.fillText("Press Space to start CAMPAIGN mode", this.gameWidth/2, this.gameHeight-35);
-			ctx.fillText("Press Enter to start RANDOM level", this.gameWidth/2, this.gameHeight-20);
+			case GAMESTATE.MENU: displayState.menu(ctx, this);
 			return;
 
-			case GAMESTATE.GAMEOVER:
-			ctx.beginPath();
-			ctx.rect(0,0,this.gameWidth,this.gameHeight);
-			ctx.fillStyle = "rgba(0,0,0,0.8)";
-			ctx.fill();
-			ctx.closePath();
-
-			ctx.font = "30px Arial";
-			ctx.fillStyle = "white";
-			ctx.textAlign = "center";
-			ctx.textBaseline = "middle";
-			ctx.fillText("Game Over", this.gameWidth/2, this.gameHeight/3);
-
-			ctx.font = "20px Arial";
-			ctx.fillStyle = "white";
-			ctx.textAlign = "center";
-			ctx.textBaseline = "middle";
-			ctx.fillText("SCORE : "+this.stats.score, this.gameWidth/2, this.gameHeight/2);
-
-			ctx.font = "15px Arial";
-			ctx.fillStyle = "white";
-			ctx.textAlign = "center";
-			ctx.textBaseline = "bottom";
-			ctx.fillText("Press Space to start CAMPAIGN mode", this.gameWidth/2, this.gameHeight-35);
-			ctx.fillText("Press Enter to start RANDOM level", this.gameWidth/2, this.gameHeight-20);
+			case GAMESTATE.OVER: displayState.over(ctx, this);
 			return;
 
-			case GAMESTATE.GAMECOMPLETE:
-			ctx.beginPath();
-			ctx.rect(0,0,this.gameWidth,this.gameHeight);
-			ctx.fillStyle = "rgba(0,0,0,0.5)";
-			ctx.fill();
-			ctx.closePath();
-
-			ctx.font = "30px Arial";
-			ctx.fillStyle = "white";
-			ctx.textAlign = "center";
-			ctx.textBaseline = "middle";
-			ctx.fillText("The End", this.gameWidth/2, this.gameHeight/3);
-
-			ctx.font = "20px Arial";
-			ctx.fillStyle = "white";
-			ctx.textAlign = "center";
-			ctx.textBaseline = "middle";
-			ctx.fillText("SCORE : "+this.stats.score, this.gameWidth/2, this.gameHeight/2);
-
-
-			ctx.font = "15px Arial";
-			ctx.fillStyle = "white";
-			ctx.textAlign = "center";
-			ctx.textBaseline = "bottom";
-			ctx.fillText("Press Space to start CAMPAIGN mode", this.gameWidth/2, this.gameHeight-35);
-			ctx.fillText("Press Enter to start RANDOM level", this.gameWidth/2, this.gameHeight-20);
-			return;
+			case GAMESTATE.COMPLETE: displayState.complete(ctx, this);
+			return;	
 		}
 
-		this.gameObjects.forEach(obj => obj.draw(ctx)); // draw frame objects
+		//display scrren when gamestate == (running or paused)
+		this.gameObjects.forEach(obj => obj.draw(ctx));
 		this.bricks.forEach(obj => obj.draw(ctx));
 
-		if(this.gameState == GAMESTATE.PAUSED){
-			ctx.beginPath();
-			ctx.rect(0,0,this.gameWidth,this.gameHeight);
-			ctx.fillStyle = "rgba(0,0,0,0.5)";
-			ctx.fill();
-			ctx.closePath();
-
-			ctx.font = "30px Arial";
-			ctx.fillStyle = "white";
-			ctx.textAlign = "center";
-			ctx.textBaseline = "middle";
-			ctx.fillText("Paused", this.gameWidth/2, this.gameHeight/2);
-		}
+		//display overlap when gamestate == paused
+		if(this.gameState == GAMESTATE.PAUSED)
+			displayState.paused(ctx, this);
 	}
 
 	update(){
+		if(this.gameState !== GAMESTATE.RUNNING) return;
+
 		if(this.stats.lives === 0){
-			this.gameState = GAMESTATE.GAMEOVER;
+			this.gameState = GAMESTATE.OVER;
 		}
 		if(this.bricks.length === 0){
 			switch(this.gameType){
@@ -183,15 +104,13 @@ export default class Game{
 				if(this.stats.currentLevel < this.levels.length)		//next level
 					this.startNextLevel();
 				else													//game end
-					this.gameState = GAMESTATE.GAMECOMPLETE;
+					this.gameState = GAMESTATE.COMPLETE;
 				break;
 				case GAMETYPE.RANDOM:
-				this.gameState = GAMESTATE.GAMECOMPLETE;
+				this.gameState = GAMESTATE.COMPLETE;
 				break;
 			}
 		}
-
-		if(this.gameState !== GAMESTATE.RUNNING) return;
 
 		let timestamp = Date.now();
 		this.gameObjects.forEach(obj => obj.update(timestamp));
