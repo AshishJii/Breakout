@@ -2,9 +2,9 @@ export const GAMESTATE = {
 	PAUSED: 0,
 	RUNNING: 1,
 	MENU: 2,
-	GAMEOVER: 3,
-	NEWLEVEL: 4,
-	GAMECOMPLETE: 5
+	SETTINGS: 3,
+	OVER: 4,
+	COMPLETE: 5
 }
 
 export const GAMETYPE = {
