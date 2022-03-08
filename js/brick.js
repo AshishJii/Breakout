@@ -36,7 +36,7 @@ export default class Brick{
 			if(point !== null){
 				console.error("SIDE IS : "+point.side);
 				this.game.ball.collidedToBrick(point);
-				this.game.stats.incrementScore();
+				this.game.stats.updateScore();
 				this.hardness--;
 				this.image = this.getImage(this.hardness);
 			}
