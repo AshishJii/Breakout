@@ -19,7 +19,7 @@ export function buildlevel(game, levelArray){
 	return bricks;
 }
 
-// NOT USED IN GAME
+//random level generator
 export function randomlevel(){
 	let level = [];
 	for(var i = 0;i<5;i++){
@@ -40,12 +40,17 @@ const level1 = [
 const level2 = [
 [0, 0, 0, 0, 0, 0, 0, 0, 0],
 [0, 0, 0, 0, 0, 0, 0, 0, 0],
+[1, 0, 0, 0, 0, 0, 0, 0, 1],];
+
+const level3 = [
+[0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0],
 [1, 0, 0, 0, 0, 0, 0, 0, 1],];*/
 
 
 const level1 = [
-[1, 0, 1, 0, 1, 0, 1, 0, 1],
-[0, 1, 0, 1, 0, 1, 0, 1, 0],
+[1, 0, 1, 1, 1, 1, 1, 0, 1],
+[0, 1, 0, 1, 1, 1, 0, 1, 0],
 [1, 0, 1, 0, 1, 0, 1, 0, 1],];
 
 const level2 = [
