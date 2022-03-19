@@ -1,4 +1,5 @@
 import Game from './js/game.js';
+import {setupFirebase} from './js/firebaseConnection.js';
 
 var canvas = document.querySelector("#mainCanvas");
 var ctx = canvas.getContext("2d");
@@ -29,3 +30,5 @@ function mouseMoveHandler(e){
 	if(relativeX > 0 && relativeX < GAME_WIDTH && e.clientY < GAME_HEIGHT)
 		paddleX = relativeX - paddleWidth/2;
 }
+
+setupFirebase();
