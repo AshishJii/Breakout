@@ -5,7 +5,8 @@ import Stats from './stats.js';
 import InputHandler from './inputHandler.js';				//if same folder use './paddle.js'
 import { buildlevel, randomlevel, levels } from './buildlevel.js';
 import { GAMESTATE, GAMETYPE } from './constants.js';
-import {displayState} from './displayState.js';
+import {drawState, paused} from './drawState.js';
+import {uploadScore} from './firebaseConnection.js';
 
 export default class Game{
 	constructor(gameWidth, gameHeight){
@@ -15,6 +16,7 @@ export default class Game{
 		this.gameType;
 		this.ball = new Ball(this);     //passing the extension of game object to the classes
 		// now the ball class can access any ingo about other objects like paddle and bricks
+		this.username = prompt("Please enter your name(used to display in leaderboards):");
 		this.paddle = new Paddle(this);
 		this.stats = new Stats(this);
 		this.inputHandler = new InputHandler(this.paddle, this);
@@ -72,24 +74,17 @@ export default class Game{
 
 	draw(ctx){
 		//display screens when gamestate != (running or paused)
-		switch(this.gameState){
-			case GAMESTATE.MENU: displayState.menu(ctx, this);
+		if(this.gameState == GAMESTATE.MENU || this.gameState == GAMESTATE.OVER || this.gameState == GAMESTATE.COMPLETE){
+			drawState(ctx,this);
 			return;
-
-			case GAMESTATE.OVER: displayState.over(ctx, this);
-			return;
-
-			case GAMESTATE.COMPLETE: displayState.complete(ctx, this);
-			return;	
 		}
-
 		//display scrren when gamestate == (running or paused)
 		this.gameObjects.forEach(obj => obj.draw(ctx));
 		this.bricks.forEach(obj => obj.draw(ctx));
 
 		//display overlap when gamestate == paused
 		if(this.gameState == GAMESTATE.PAUSED)
-			displayState.paused(ctx, this);
+			paused(ctx, this);
 	}
 
 	update(){
@@ -97,15 +92,22 @@ export default class Game{
 
 		if(this.stats.lives === 0){
 			this.gameState = GAMESTATE.OVER;
+			if(this.gameType == GAMETYPE.CAMPAIGN){
+				uploadScore(this.username, this.stats.score);					//score upload is here and
+			}
 		}
 		if(this.bricks.length === 0){
 			switch(this.gameType){
 				case GAMETYPE.CAMPAIGN:
-				if(this.stats.currentLevel < this.levels.length)		//next level
+				if(this.stats.currentLevel < this.levels.length){		//next level
 					this.startNextLevel();
-				else													//game end
+				}
+				else{
 					this.gameState = GAMESTATE.COMPLETE;
+					uploadScore(this.username, this.stats.score);					//score upload is here too
+				}
 				break;
+
 				case GAMETYPE.RANDOM:
 				this.gameState = GAMESTATE.COMPLETE;
 				break;
