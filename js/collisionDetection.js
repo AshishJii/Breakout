@@ -68,13 +68,13 @@ export class PositionDetection{
 
 	intersectionPoint(){
 		let point;
-		console.log("PREVIOUS LOCATION : ");
-		console.log(this.ball1);
-		console.log("CURRENT LOCATION : ");
-		console.log(this.ball2);
-		console.log("brick borders :");
-		console.log("x = "+this.left+" to "+this.right);
-		console.log("x = "+this.top+" to "+this.bottom);
+		//console.log("PREVIOUS LOCATION : ");
+		//console.log(this.ball1);
+		//console.log("CURRENT LOCATION : ");
+		//console.log(this.ball2);
+		//console.log("brick borders :");
+		//console.log("x = "+this.left+" to "+this.right);
+		//console.log("x = "+this.top+" to "+this.bottom);
 
 		let SidesToCheck = this.directionCheck();
 		//error fallback when ball after colliding could not come out of brick till next frame
@@ -108,14 +108,14 @@ export class PositionDetection{
 		b2 = this.x1 - this.x2;
 		c2 = this.x1*this.y2 - this.x2*this.y1;
 
-		console.log(a1+"x+"+b1+"y = "+c1);
-		console.log(a2+"x+"+b2+"y = "+c2);
+		//console.log(a1+"x+"+b1+"y = "+c1);
+		//console.log(a2+"x+"+b2+"y = "+c2);
 
 		determinant = a1*b2 - a2*b1;
 
 		X = ((b2*c1 - b1*c2)/determinant).toFixed(2);
 		Y = ((a1*c2 - a2*c1)/determinant).toFixed(2);
-		console.log("Intersection Point : ("+X+", "+Y+")");
+		//console.log("Intersection Point : ("+X+", "+Y+")");
 		return {x: X,y: Y};
 	}
 
@@ -151,8 +151,8 @@ export class PositionDetection{
 			this.y2 = this.bottom;
 			break;;
 		}
-		console.log("Line point1 quardinates : "+this.x1+", "+this.y1);
-		console.log("Line point2 quardinates : "+this.x2+", "+this.y2);
+		//console.log("Line point1 quardinates : "+this.x1+", "+this.y1);
+		//console.log("Line point2 quardinates : "+this.x2+", "+this.y2);
 		return;
 	}
 
@@ -191,7 +191,7 @@ export class PositionDetection{
 			arr.splice(arr.indexOf("TOP"),1);
 		}
 
-		console.error("SidesToCheck : "+arr.toString());
+		//console.error("SidesToCheck : "+arr.toString());
 		return arr;
 	}
 }
