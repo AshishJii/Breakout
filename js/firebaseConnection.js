@@ -41,6 +41,8 @@ export function getHighScores(){
 export function uploadScore(nam, scor){
 	push(reference,{
 		name: nam,
-		score: scor
+		baseScore: scor.baseScore,
+		bonus: scor.bonus,
+		score: scor.tScore		
 	});
 }
