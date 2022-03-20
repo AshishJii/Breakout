@@ -2,6 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js";
 import { getDatabase, ref, get, onValue, push, query, limitToLast, orderByChild} from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js";
 
+//if you are here. you are quite a tester.
+//you probably want to steal my firebase credentials. Well, go for it.
 const firebaseConfig = {
 	apiKey: "AIzaSyA0bqq_SOPEFEqfBMmNHRFvna3BhuWgxKA",
 	authDomain: "breakout-55a9d.firebaseapp.com",
