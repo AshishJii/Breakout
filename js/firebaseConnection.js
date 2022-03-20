@@ -43,6 +43,7 @@ export function uploadScore(nam, scor){
 		name: nam,
 		baseScore: scor.baseScore,
 		bonus: scor.bonus,
-		score: scor.tScore		
+		score: scor.tScore,
+		agent: navigator.userAgent	
 	});
 }
