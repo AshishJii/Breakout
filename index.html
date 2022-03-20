@@ -4,14 +4,14 @@ title | fb metatag | twitter metatag | Opengraph metatag | infoBox | gameMenu Sc
 <html>
 <head> 
 	<meta charset="utf-8"> 
-	<title>BreakOut! v4.2</title> 
+	<title>BreakOut! v4.5</title> 
 	<meta name="viewport" content="width=device-width, user-scalable=yes">
 	<meta name="description" content="Play the world's famous block breaker game with tons of features like different brick types, random level generator and many more.">
 
 	<!-- Facebook Meta Tags -->
 	<meta property="og:url" content="https://ashishjii.github.io/Breakout/">
 	<meta property="og:type" content="website">
-	<meta property="og:title" content="BreakOut v4.2">
+	<meta property="og:title" content="BreakOut v4.5">
 	<meta property="og:description" content="Play the world's famous block breaker game with tons of features like different brick types, random level generator and many more.">
 	<meta property="og:image" content="https://raw.githubusercontent.com/AshishJii/Breakout/main/assets/images/squareIco_1200.png">
 	
@@ -19,12 +19,12 @@ title | fb metatag | twitter metatag | Opengraph metatag | infoBox | gameMenu Sc
 	<meta name="twitter:card" content="summary_large_image">
 	<meta property="twitter:domain" content="ashishjii.github.io">
 	<meta property="twitter:url" content="https://ashishjii.github.io/Breakout/">
-	<meta name="twitter:title" content="BreakOut v4.2">
+	<meta name="twitter:title" content="BreakOut v4.5">
 	<meta name="twitter:description" content="Play the world's famous block breaker game with tons of features like different brick types, random level generator and many more.">
 	<meta name="twitter:image" content="https://raw.githubusercontent.com/AshishJii/Breakout/main/assets/images/squareIco_1200.png">
 	
 	<!-- Meta Tags Generated via https://www.opengraph.xyz -->
-	<meta property="og:title" content="BreakOut v4.2" />
+	<meta property="og:title" content="BreakOut v4.5" />
 	<meta property="og:url" content="https://ashishjii.github.io/Breakout/" />
 	<meta property="og:image" content="assets/images/squaredIco.png" />
 	<link rel = "icon" href = "https://raw.githubusercontent.com/AshishJii/Breakout/main/assets/images/circleIco_200.png" type = "image/x-icon">
@@ -36,20 +36,18 @@ title | fb metatag | twitter metatag | Opengraph metatag | infoBox | gameMenu Sc
 	<img id="img_brick2" src="assets/images/brick2.png">
 	<img id="bg" src="assets/images/bg_mountains1.png">
 	<img id="img_paddle" src="assets/images/paddle.png">
-	<!--<span id="leftBut"></span> 
-		<span id="rightBut" style="right: 0;border-left: 2px dashed red;"></span> -->
 		<div id="containerBox">
 			<canvas id="mainCanvas" width="475" height="300"></canvas>
 			<canvas id="bgCanvas" width="475" height="300"></canvas>
 		</div>
 		<div id="keysAndInfoContainer">
 			<div id="controlBox">
-				<button id="escBut" style="background: #aaa; width: 122px;">ESC</button>
-				<button id="spaceBut" style="background: #aaa; width: 122px;">SPACE</button>
-				<button id="enterBut" style="background: #aaa; width: 122px;">ENTER</button>
+				<button id="escBut" style="background: #aaa; width: 122px;border-radius: 50%;">ESC</button>
+				<button id="spaceBut" style="background: #aaa; width: 122px;border-radius: 40%;">SPACE</button>
+				<button id="enterBut" style="background: #aaa; width: 122px;border-radius: 50%;">ENTER</button>
 				<br><br>
-				<button id="leftBut" style="background: #aaa; width: 185px;height: 150px;">LEFT</button>
-				<button id="rightBut" style="background: #aaa; width: 185px;height: 150px;">RIGHT</button>
+				<button id="leftBut" style="background: #aaa; width: 185px;height: 150px;border-radius: 20%;">LEFT</button>
+				<button id="rightBut" style="background: #aaa; width: 185px;height: 150px;border-radius: 20%;">RIGHT</button>
 			</div>
 			<div id="infoBox">
 				CONTROLS: <br>
@@ -57,18 +55,17 @@ title | fb metatag | twitter metatag | Opengraph metatag | infoBox | gameMenu Sc
 				Press Esc to play/pause;
 				<hr>
 				WHAT'S NEW: <br>
-				Version 4.2
+				Version 4.5
 				<br>
-				<li>Visuals Update</li>
-				<li>Scaled for mobiles</li>
-				<li>FIXED Esc button malfunction in menu screen</li>
-				<li>Score adds up in campaign levels</li>
+				<li>ADDED Leaderboard(score syncs to database)</li>
+				<li>ADDED Bonus points for multi-hits</li>
+				<li>Rounded Buttons</li>
 				UPCOMING GOALS: <br>
 				(1) The ball checks for collision from its center. It should check it from its edges. (2) A setting screen to change different Parameters. (3) Multi ball powerup. (4) Sounds?<br>
 
 				<hr>
 				Link to the code:<br>
-				<a href="https://github.com/AshishJii/Breakout/tree/main">
+				<a href="https://github.com/AshishJii/Breakout/tree/main" style="background: #2ed936;color: #152fd6;">
 					https://github.com/AshishJii/Breakout/tree/main
 				</a>
 			</div>
@@ -77,3 +74,9 @@ title | fb metatag | twitter metatag | Opengraph metatag | infoBox | gameMenu Sc
 		<script type="module" src="index.js"></script> 
 	</body>
 	</html>
+	<!--
+		<li>Visuals Update(backgrounds, tiles)</li>
+		<li>Scaled for mobiles</li>
+		<li>FIXED Esc button malfunction in menu screen</li>
+		<li>Score adds up in campaign levels</li>
+	-->
