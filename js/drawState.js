@@ -53,7 +53,7 @@ function menu(ctx, game){
 	ctx.fillStyle = "white";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";
-	ctx.fillText("v4.2", game.gameWidth/2, game.gameHeight/2+18);
+	ctx.fillText("v4.5", game.gameWidth/2, game.gameHeight/2+18);
 
 	ctx.font = "15px Arial";
 	ctx.fillStyle = "white";
@@ -82,7 +82,7 @@ function campaignOver(ctx, game){
 	ctx.fillStyle = "white";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "top";
-	ctx.fillText("SCORE : "+game.stats.score, game.gameWidth/2, 37);
+	ctx.fillText("SCORE : "+game.stats.tScore, game.gameWidth/2, 37);
 
 	ctx.beginPath();
 	ctx.rect(65,52,game.gameWidth-130,game.gameHeight-100);
@@ -134,7 +134,7 @@ function campaignComplete(ctx, game){
 	ctx.fillStyle = "white";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "top";
-	ctx.fillText("SCORE : "+game.stats.score, game.gameWidth/2, 37);
+	ctx.fillText("SCORE : "+game.stats.tScore, game.gameWidth/2, 37);
 
 	ctx.beginPath();
 	ctx.rect(65,52,game.gameWidth-130,game.gameHeight-100);
@@ -187,7 +187,7 @@ function randomOver(ctx, game){
 	ctx.fillStyle = "white";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";
-	ctx.fillText("SCORE : "+game.stats.score, game.gameWidth/2, game.gameHeight/2);
+	ctx.fillText("SCORE : "+game.stats.tScore, game.gameWidth/2, game.gameHeight/2);
 
 	ctx.font = "15px Arial";
 	ctx.fillStyle = "white";
@@ -213,7 +213,7 @@ function randomComplete(ctx, game){
 	ctx.fillStyle = "white";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";
-	ctx.fillText("SCORE : "+game.stats.score, game.gameWidth/2, game.gameHeight/2);
+	ctx.fillText("SCORE : "+game.stats.tScore, game.gameWidth/2, game.gameHeight/2);
 
 
 	ctx.font = "15px Arial";
