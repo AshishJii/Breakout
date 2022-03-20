@@ -93,7 +93,7 @@ export default class Game{
 		if(this.stats.lives === 0){
 			this.gameState = GAMESTATE.OVER;
 			if(this.gameType == GAMETYPE.CAMPAIGN){
-				uploadScore(this.username, this.stats.score);					//score upload is here and
+				uploadScore(this.username, this.stats);					//score upload is here and
 			}
 		}
 		if(this.bricks.length === 0){
@@ -104,7 +104,7 @@ export default class Game{
 				}
 				else{
 					this.gameState = GAMESTATE.COMPLETE;
-					uploadScore(this.username, this.stats.score);					//score upload is here too
+					uploadScore(this.username, this.stats);					//score upload is here and
 				}
 				break;
 
