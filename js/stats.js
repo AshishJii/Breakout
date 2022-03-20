@@ -6,7 +6,9 @@ export default class Stats{
 	}
 
 	resetScore(){
-		this.score = 0;
+		this.baseScore = 0;
+		this.bonus = 0;
+		this.tScore = 0;
 	}
 
 	resetLives(){
@@ -14,12 +16,15 @@ export default class Stats{
 	}
 	draw(ctx){
 		//Score
+		var txt = "Score: "+this.baseScore;
 		ctx.beginPath();
 		ctx.font = STATS_FONTSIZE+" "+STATS_FONTS;
 		ctx.fillStyle = STATS_FONTCOLOR;
 		ctx.textAlign = "left";
 		ctx.textBaseline = "top";
-		ctx.fillText("Score: "+this.score, STATS_HORIZONTAL_MARGIN, STATS_VERTICAL_MARGIN);
+		ctx.fillText(txt, STATS_HORIZONTAL_MARGIN, STATS_VERTICAL_MARGIN);
+		ctx.fillStyle = "red";
+		ctx.fillText("+"+(this.tScore-this.baseScore), STATS_HORIZONTAL_MARGIN + ctx.measureText(txt).width, STATS_VERTICAL_MARGIN);
 		ctx.closePath();
 
 		//Level
@@ -53,6 +58,13 @@ export default class Stats{
 	}
 
 	updateScore(){
-		this.score++;
+		this.baseScore++;
+		this.tScore++;
+		this.tScore += this.bonus;
+		this.bonus++;
+	}
+
+	resetBonus(){		//called in ball class when ball hits paddle
+		this.bonus = 0;
 	}
 }
