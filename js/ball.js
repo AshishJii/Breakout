@@ -74,6 +74,7 @@ export default class Ball{
 		if(this.position.y > this.gameHeight - this.height/2){
 			this.game.stats.decrementLives();
 			this.resetAll();	// only ball reset not paddle. WHY? personal perference
+			this.game.stats.resetBonus();
 		}
 
 		//check collision with paddle
@@ -87,6 +88,7 @@ export default class Ball{
 
 			this.currentSpeed.y = -Math.sqrt(Math.pow(this.speed,2)-Math.pow(this.currentSpeed.x,2));
 			this.position.y = this.game.paddle.position.y - this.height/2;
+			this.game.stats.resetBonus();
 		}
 	}
 
