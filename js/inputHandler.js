@@ -1,6 +1,18 @@
 import {RIGHTARROW_KEYCODE, LEFTARROW_KEYCODE, ESC_KEYCODE, SPACE_KEYCODE, ENTER_KEYCODE} from './constants.js';
 export default class InputHandler{
 	constructor(paddle, game){
+		playButton.addEventListener("click",e => {
+			if(nameBox.value=="") return;
+			game.username = nameBox.value;
+			game.saveNewUser(nameBox.value);
+			userDialog.close();
+		});
+
+		playAsNewPlayer.addEventListener("click",()=>{
+			userNamePage.style.display = "block";
+			userSelectionPage.style.display = "none";
+   		});
+
 		document.addEventListener("keydown", e => {
 			switch(e.keyCode){
 				case RIGHTARROW_KEYCODE:
@@ -66,5 +78,5 @@ export default class InputHandler{
 				break;
 			}
 		});
-	}	
+	}
 }
