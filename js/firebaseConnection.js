@@ -70,8 +70,10 @@ export function setupFirebase(game){
 				if (snapshot.exists()) {
 					let users = Object.values(snapshot.val());
 					fillDialog(game, users);
+					
 				} 
 				else {
+					fillDialog(game);
 					console.log("No data available");
 				}
 			}).catch((error) => {
