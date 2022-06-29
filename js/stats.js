@@ -7,7 +7,7 @@ export default class Stats{
 
 	resetScore(){
 		this.baseScore = 0;
-		this.bonus = 0;
+		this.bonusStreak = 0;
 		this.tScore = 0;
 	}
 
@@ -60,11 +60,11 @@ export default class Stats{
 	updateScore(){
 		this.baseScore++;
 		this.tScore++;
-		this.tScore += this.bonus;
-		this.bonus++;
+		this.tScore += this.bonusStreak;
+		this.bonusStreak++;
 	}
 
-	resetBonus(){		//called in ball class when ball hits paddle
-		this.bonus = 0;
+	resetBonusStreak(){		//called in ball class when ball hits paddle from ball.js class
+		this.bonusStreak = 0;
 	}
 }
