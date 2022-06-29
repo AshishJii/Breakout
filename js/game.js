@@ -6,7 +6,8 @@ import InputHandler from './inputHandler.js';				//if same folder use './paddle.
 import { buildlevel, randomlevel, levels } from './buildlevel.js';
 import { GAMESTATE, GAMETYPE } from './constants.js';
 import {drawState, paused} from './drawState.js';
-import {uploadScore} from './firebaseConnection.js';
+import {setupFirebase, uploadScore, saveNewUser} from './firebaseConnection.js';
+import {showDialog} from './dialog.js';
 
 export default class Game{
 	constructor(gameWidth, gameHeight){
@@ -16,7 +17,15 @@ export default class Game{
 		this.gameType;
 		this.ball = new Ball(this);     //passing the extension of game object to the classes
 		// now the ball class can access any ingo about other objects like paddle and bricks
-		this.username = prompt("Please enter your name(used to display in leaderboards):");
+
+
+		setupFirebase(this);
+		//this.username = prompt("Please enter your name(used to display in leaderboards):");
+		showDialog();
+		this.saveNewUser = saveNewUser;
+
+		this.username = "Agent P";
+		//setName(this.username);				//save entered name to anonymous id
 		this.paddle = new Paddle(this);
 		this.stats = new Stats(this);
 		this.inputHandler = new InputHandler(this.paddle, this);
@@ -78,6 +87,7 @@ export default class Game{
 			drawState(ctx,this);
 			return;
 		}
+
 		//display scrren when gamestate == (running or paused)
 		this.gameObjects.forEach(obj => obj.draw(ctx));
 		this.bricks.forEach(obj => obj.draw(ctx));
@@ -93,6 +103,7 @@ export default class Game{
 		if(this.stats.lives === 0){
 			this.gameState = GAMESTATE.OVER;
 			if(this.gameType == GAMETYPE.CAMPAIGN){
+				
 				uploadScore(this.username, this.stats);					//score upload is here and
 			}
 		}
