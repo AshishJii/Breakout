@@ -63,8 +63,6 @@ function menu(ctx, game){
 	ctx.fillText("Press Enter to start RANDOM level", game.gameWidth/2, game.gameHeight-20);
 }
 
-
-
 function campaignOver(ctx, game){
 	ctx.beginPath();
 	ctx.rect(0,0,game.gameWidth,game.gameHeight);
@@ -105,7 +103,7 @@ function campaignOver(ctx, game){
 		ctx.textAlign = "right";
 		ctx.fillText(data[i].name, game.gameWidth/2-10, 75+(18*i));
 		ctx.textAlign = "left";
-		ctx.fillText(data[i].score, game.gameWidth/2+10, 75+(18*i));
+		ctx.fillText(data[i].totalScore, game.gameWidth/2+10, 75+(18*i));
 	}
 	//Experimental
 
@@ -157,7 +155,7 @@ function campaignComplete(ctx, game){
 		ctx.textAlign = "right";
 		ctx.fillText(data[i].name, game.gameWidth/2-10, 75+(18*i));
 		ctx.textAlign = "left";
-		ctx.fillText(data[i].score, game.gameWidth/2+10, 75+(18*i));
+		ctx.fillText(data[i].totalScore, game.gameWidth/2+10, 75+(18*i));
 	}
 	//Experimental
 
