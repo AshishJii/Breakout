@@ -11,6 +11,7 @@ export default class InputHandler{
 		playAsNewPlayer.addEventListener("click",()=>{
 			userNamePage.style.display = "block";
 			userSelectionPage.style.display = "none";
+			nameBox.focus();
    		});
 
 		document.addEventListener("keydown", e => {
