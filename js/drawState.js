@@ -53,7 +53,7 @@ function menu(ctx, game){
 	ctx.fillStyle = "white";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";
-	ctx.fillText("v4.5", game.gameWidth/2, game.gameHeight/2+18);
+	ctx.fillText("v5.0", game.gameWidth/2, game.gameHeight/2+18);
 
 	ctx.font = "15px Arial";
 	ctx.fillStyle = "white";
