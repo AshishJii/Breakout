@@ -37,6 +37,7 @@ export function setupFirebase(game){
 
 	signInAnonymously(auth)
 	.then(() => {
+		console.log("Device is signed in------------------");
    		// Signed in..
    	})
 	.catch((error) => {
@@ -48,29 +49,27 @@ export function setupFirebase(game){
 
 	reference = ref(db, "scores");
 	var que = query(reference, orderByChild('totalScore'), limitToLast(10));
-	
 
-	onValue(reference, snapshot=>{			//listen change and Display data
-		data = [];
-		get(que).then(snap=>{				//get ordered data
-			console.log(snap);
-			snap.forEach(childSnap=>{		//run array through it
-				data.push(childSnap.val());	//push the child in array 'data'
-			});data.reverse();
-		});
-	});
-
-
-	
 
 	onAuthStateChanged(auth, (user) => {
 		if (user) {
+			onValue(reference, snapshot=>{			//listen change and Display data
+				console.log("snapshot here "+snapshot);
+				data = [];
+				get(que).then(snap=>{				//get ordered data
+					console.log(snap);
+					snap.forEach(childSnap=>{		//run array through it
+						data.push(childSnap.val());	//push the child in array 'data'
+					});
+					data.reverse();
+				});
+			});
 			currentUser = user;
 			get(child(ref(db, "users"), currentUser.uid)).then((snapshot) => {
 				if (snapshot.exists()) {
 					let users = Object.values(snapshot.val());
 					fillDialog(game, users);
-					
+
 				} 
 				else {
 					fillDialog(game);
