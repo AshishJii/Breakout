@@ -10,6 +10,7 @@ export function fillDialog(game, arr=[]){
 		var spn = document.createElement("span");
 		spn.id = "name"+index;
 		spn.style.display = "block";
+		spn.style.cursor = "pointer";
 		//REsource Leak. Someone can enter malicous code here. Fix it
 		spn.innerHTML = `Play as ${name}<span style="float:right">></span></span><hr>`;
 		savedUsers.prepend(spn);
