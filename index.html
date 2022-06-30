@@ -62,7 +62,6 @@
 			<li>Fixed a bug relating to bonus corrupting to zero.</li>
 			<li>Database is no longer public. Authentication is required.</li>
 			
-
 			UPCOMING GOALS: <br>
 			(1) The ball checks for collision from its center. It should check it from its edges. (2) A setting screen to change different Parameters. (3) Multi ball powerup. (4) Sounds?<br>
 
@@ -73,19 +72,19 @@
 			</a>
 		</div>
 	</div>
-	<dialog id="userDialog" style="width:300px;font-family:monospace;font-size:20px; user-select:none;position:fixed;left:50%;top:50%;transform: translate(-50%, -50%);z-index: 9999;" open>
+	<dialog id="userDialog" style="width:300px;font-family:monospace;font-size:20px; user-select:none;position:fixed;left:50%;top:50%;transform: translate(-50%, -50%);z-index: 9999;padding: 10px;" open>
 		<span id="userSelectionPage" style="padding:0px">
-			<span id="savedUsers" style="padding: 0px">----LOADING----</span>
+			<span id="savedUsers" style="padding: 0px">---LOADING-SAVED-PLAYERS---</span>
 			<span id="playAsNewPlayer" style="background: #aaa; display:block">
-				New player<span style="float:right">></span>
+				New player<span style="float:right; background: inherit;">></span>
 			</span>
 		</span>
 
 		<span id="userNamePage" style="display:none;padding:0px">
 			<fieldset>
 				<legend>Name</legend>
-				<input type="text" name="name" id="nameBox" placeholder="Enter your Name" style="border: none;outline: none;width: 70%;">
-				<button id="playButton" style="width:20%">Play!</button>
+				<input type="text" name="name" id="nameBox" placeholder="Enter your Name" style="border: none;outline: none;width: 70%;font-size: 20px;">
+				<button id="playButton" style="width:20%; background: #aaa;height: 30px;">Play!</button>
 			</fieldset>
 		</span>
 	</dialog>
