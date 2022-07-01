@@ -34,12 +34,6 @@
 	background: #2ed936;
 	padding: 20px;
 }
-/*span{
-	position: absolute;
-	width: 50%;
-	height: 100vh;
-	z-index: 2;
-}*/
 
 img{
 	display: none;
@@ -49,4 +43,26 @@ button{touch-action: manipulation;
 	width: 75px;
 	height: 50px;
 	user-select: none;
+}
+
+
+#userDialog{
+	width:300px;
+	font-family:monospace;
+	font-size:20px; 
+	user-select:none;
+	position:fixed;
+	left:50%;top:50%;transform: translate(-50%, -50%);
+	z-index: 9999;
+	padding: 10px;
+	box-shadow: 0 .4rem .8rem -.1rem rgba(0, 32, 128, .1), 0 0 0 1px #f0f2f7;
+	border-radius: .5rem;
+}
+.stage {
+	margin: 0.7rem;
+	background: inherit;
+	display: flex;
+	justify-content: center;
+    /*  box-shadow: 0 .4rem .8rem -.1rem rgba(0, 32, 128, .1), 0 0 0 1px #f0f2f7;
+    border-radius: .25rem;*/
 }
