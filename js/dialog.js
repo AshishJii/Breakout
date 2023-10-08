@@ -1,4 +1,5 @@
 import {setupFirebase, uploadScore} from './firebaseConnection.js';
+import {GAMESTATE} from './constants.js';
 
 export function showDialog(){
 	savedUsers.style.display="block";
@@ -17,6 +18,7 @@ export function fillDialog(game, arr=[]){
 		spn.addEventListener("click",e=>{
 			game.username = name;
 			userDialog.close();
+			game.gameState = GAMESTATE.MENU;		//this shouldnt be here. it should be handled from game.js
 		})
 	});	
 }

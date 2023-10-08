@@ -4,7 +4,8 @@ export const GAMESTATE = {
 	MENU: 2,
 	SETTINGS: 3,
 	OVER: 4,
-	COMPLETE: 5
+	COMPLETE: 5,
+	USER_SELECTION: 6
 }
 
 export const GAMETYPE = {

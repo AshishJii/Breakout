@@ -1,4 +1,4 @@
-import {RIGHTARROW_KEYCODE, LEFTARROW_KEYCODE, ESC_KEYCODE, SPACE_KEYCODE, ENTER_KEYCODE} from './constants.js';
+import {RIGHTARROW_KEYCODE, LEFTARROW_KEYCODE, ESC_KEYCODE, SPACE_KEYCODE, ENTER_KEYCODE, GAMESTATE} from './constants.js';
 export default class InputHandler{
 	constructor(paddle, game){
 		playButton.addEventListener("click",e => {
@@ -6,6 +6,7 @@ export default class InputHandler{
 			game.username = nameBox.value;
 			game.saveNewUser(nameBox.value);
 			userDialog.close();
+			game.gameState = GAMESTATE.MENU;		//this should not be here. gamestate should be handled from game.js
 		});
 
 		playAsNewPlayer.addEventListener("click",()=>{
@@ -27,10 +28,10 @@ export default class InputHandler{
 				break;
 				case SPACE_KEYCODE:
 				e.preventDefault();
-				game.startCampaign();
+				game.startRandom();
 				break;
 				case ENTER_KEYCODE:
-				game.startRandom();
+				game.startCampaign();
 				break;
 			}
 		});
@@ -59,10 +60,10 @@ export default class InputHandler{
 				game.togglePause();
 				break;
 				case "spaceBut":
-				game.startCampaign();
+				game.startRandom();
 				break;
 				case "enterBut":
-				game.startRandom();
+				game.startCampaign();
 				break;
 			}
 		});

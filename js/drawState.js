@@ -4,6 +4,8 @@ import {getHighScores} from './firebaseConnection.js';
 
 export function drawState(ctx, game){
 	switch(game.gameState){
+		case GAMESTATE.USER_SELECTION: menu(ctx, game);
+		return;
 		case GAMESTATE.MENU: menu(ctx, game);
 		return;
 		case GAMESTATE.OVER:
@@ -53,14 +55,14 @@ function menu(ctx, game){
 	ctx.fillStyle = "white";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";
-	ctx.fillText("v5.1", game.gameWidth/2, game.gameHeight/2+18);
+	ctx.fillText("v5.2", game.gameWidth/2, game.gameHeight/2+18);
 
 	ctx.font = "15px Arial";
 	ctx.fillStyle = "white";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "bottom";
-	ctx.fillText("Press Space to start CAMPAIGN mode", game.gameWidth/2, game.gameHeight-35);
-	ctx.fillText("Press Enter to start RANDOM level", game.gameWidth/2, game.gameHeight-20);
+	ctx.fillText("Press Enter to start CAMPAIGN mode", game.gameWidth/2, game.gameHeight-35);
+	ctx.fillText("Press Space to generate RANDOM level", game.gameWidth/2, game.gameHeight-20);
 }
 
 function campaignOver(ctx, game){
@@ -111,8 +113,8 @@ function campaignOver(ctx, game){
 	ctx.fillStyle = "white";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "bottom";
-	ctx.fillText("Press Space to start CAMPAIGN mode", game.gameWidth/2, game.gameHeight-30);
-	ctx.fillText("Press Enter to start RANDOM level", game.gameWidth/2, game.gameHeight-10);
+	ctx.fillText("Press Enter to start CAMPAIGN mode", game.gameWidth/2, game.gameHeight-30);
+	ctx.fillText("Press Space to generate RANDOM level", game.gameWidth/2, game.gameHeight-10);
 }
 
 function campaignComplete(ctx, game){
@@ -163,8 +165,8 @@ function campaignComplete(ctx, game){
 	ctx.fillStyle = "white";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "bottom";
-	ctx.fillText("Press Space to start CAMPAIGN mode", game.gameWidth/2, game.gameHeight-30);
-	ctx.fillText("Press Enter to start RANDOM level", game.gameWidth/2, game.gameHeight-10);
+	ctx.fillText("Press Enter to start CAMPAIGN mode", game.gameWidth/2, game.gameHeight-30);
+	ctx.fillText("Press Space to generate RANDOM level", game.gameWidth/2, game.gameHeight-10);
 }
 
 
@@ -191,8 +193,8 @@ function randomOver(ctx, game){
 	ctx.fillStyle = "white";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "bottom";
-	ctx.fillText("Press Space to start CAMPAIGN mode", game.gameWidth/2, game.gameHeight-35);
-	ctx.fillText("Press Enter to start RANDOM level", game.gameWidth/2, game.gameHeight-20);
+	ctx.fillText("Press Enter to start CAMPAIGN mode", game.gameWidth/2, game.gameHeight-35);
+	ctx.fillText("Press Space to generate RANDOM level", game.gameWidth/2, game.gameHeight-20);
 }
 function randomComplete(ctx, game){
 	ctx.beginPath();
@@ -218,6 +220,6 @@ function randomComplete(ctx, game){
 	ctx.fillStyle = "white";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "bottom";
-	ctx.fillText("Press Space to start CAMPAIGN mode", game.gameWidth/2, game.gameHeight-35);
-	ctx.fillText("Press Enter to start RANDOM level", game.gameWidth/2, game.gameHeight-20);
+	ctx.fillText("Press Enter to start CAMPAIGN mode", game.gameWidth/2, game.gameHeight-35);
+	ctx.fillText("Press Space to generate RANDOM level", game.gameWidth/2, game.gameHeight-20);
 }

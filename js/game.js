@@ -13,7 +13,7 @@ export default class Game{
 	constructor(gameWidth, gameHeight){
 		this.gameWidth = gameWidth;
 		this.gameHeight = gameHeight;
-		this.gameState = GAMESTATE.MENU;
+		this.gameState = GAMESTATE.USER_SELECTION;
 		this.gameType;
 		this.ball = new Ball(this);     //passing the extension of game object to the classes
 		// now the ball class can access any ingo about other objects like paddle and bricks
@@ -83,7 +83,10 @@ export default class Game{
 
 	draw(ctx){
 		//display screens when gamestate != (running or paused)
-		if(this.gameState == GAMESTATE.MENU || this.gameState == GAMESTATE.OVER || this.gameState == GAMESTATE.COMPLETE){
+		if(this.gameState == GAMESTATE.USER_SELECTION 
+			|| this.gameState == GAMESTATE.MENU 
+			|| this.gameState == GAMESTATE.OVER 
+			|| this.gameState == GAMESTATE.COMPLETE){
 			drawState(ctx,this);
 			return;
 		}

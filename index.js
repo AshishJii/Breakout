@@ -22,13 +22,6 @@ function draw(timestamp){
 	stopper = requestAnimationFrame(draw);
 }
 
-let intro = "Welcome to BreakOut 5.1.\n";
-intro += "Made using HTML, CSS, and vanilla JavaScript with Firebase integration.\n";
-intro += "Players can break blocks (either use left/right arrows or buttons) and compete for high scores, thanks to Firebase's real-time database.\n";
-intro += "You can also play as previous users added on this PC\n";
-intro += "Enjoy!";
-alert(intro);
-
 requestAnimationFrame(draw);
 
 //  document.addEventListener("mousemove", mouseMoveHandler);
